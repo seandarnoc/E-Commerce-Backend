@@ -24,13 +24,21 @@ THEN I am able to successfully create, update, and delete data in my database
 
 # First Steps
 
-
+run sql to load schema after login to mysql write "source db/schema.sql"
+then
+npm run seed
+then 
+npm start
+use postman or insomnia to run CRUD
 
 # Dependencies
 sequelize
 mysql2
-bcrypt
+dotenv
+
 
 # links 
 
 https://github.com/seandarnoc/E-Commerce-Backend
+1st video: https://drive.google.com/file/d/1WTu98H5w2MzKG9rIF_J6iI4AuCtHev9S/view
+2nd video: https://drive.google.com/file/d/1eBQXBm4EzwCn0Ogdv3vnMw0etPjLVV6L/view

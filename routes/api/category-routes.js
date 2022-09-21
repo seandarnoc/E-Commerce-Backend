@@ -27,10 +27,11 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // create a new category
-  const newCategory = req.body.name
-  if(newCategory) {
-    const createCategory = await Category.create({category_name: newCategory})
-    res.json({message: `new category created.`})
+  
+  if(req.body) {
+    const createCategory = await Category.create({category_name: req.body.category_name})
+    if(createCategory) {
+      res.json({message: `new category created.`})}
   } else {
     res.json({message: `name was missing, please try again.`})
   }
@@ -38,11 +39,11 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
-  const updateCategory = await Category.update({category_name: req.body.name}, {
-    where: {id:req.params.id}
-  })
-  if(updateCategory) {
-    res.json({message: `record was updated.`})
+  const requestedCategory = req.params.id;
+  const updateCategory = await Category.update({category_name: req.body.category_name}, {
+    where: {id: requestedCategory}})
+    if(updateCategory) {
+    res.json({message: `the category you selected with ID ${req.params.id} is updated.`})
   } else {
     res.json({message: `error, try again.`})
   }
